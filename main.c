@@ -22,7 +22,7 @@ int main( void )
 	float cont;
 	int acumnumpalcmp;
 	float acum = 0.00;
-	float porcentotal = 0.00;
+	float porcentotal;
 	int longitud;
 	int rescomp;
 
@@ -40,12 +40,15 @@ int main( void )
 		char char_NombreFichero[15];
 		int int_largoPalabra; 
 		int int_vecesrepetida;
-		float float_porcentaje;
-		float float_porcentajetotal;		
+		float float_porcentaje;		
 		char char_palanterior[50];
 		char char_palsiguiente[50];
 	};
 	struct palclv structpalclv[100];
+	
+	struct ficherocmp{
+		int int_largofichero;															//Crear estructura para los ficheros .cmp		
+	};
 	
 	dirtxtcomp = opendir(pathtxtcmp);																			//Abrimos los 2 directorios.
     dirpalclav = opendir(pathpalclav);
@@ -137,8 +140,8 @@ int main( void )
 										}	
 								}
 						}	
-	
-								fprintf(results, "\n\n\t\t\t--------\\||El texto %s tiene %.0f palabras||//--------", nomtxtcmp, cont);
+								porcentotal=0;
+								fprintf(results, "\n\n\n\t\t\t--------\\||El texto %s tiene %.0f palabras||//--------", nomtxtcmp, cont);
 								int f3;									//Aqui imprimimos en result la struct de las palabras.
 								for (f3=0;f3<=5;f3++){
 									fprintf(results, "\nPalabra %s", structpalclv[f3].char_Nombre);
@@ -150,11 +153,14 @@ int main( void )
 										fprintf(results,"\t\t\t\t<<<<<<<<<<--------------||\n\n");
 										structpalclv[f3].float_porcentaje = structpalclv[f3].int_vecesrepetida*100/cont;
 										fprintf(results, "El porcentaje de esta palabra sobre el texto es del %.0f%%\n", structpalclv[f3].float_porcentaje );
-										structpalclv[f3].float_porcentajetotal= structpalclv[f3].float_porcentaje+structpalclv[f3].float_porcentajetotal;
+										porcentotal= structpalclv[f3].float_porcentaje+porcentotal;
 									}
 								}	
-								fprintf(results,"\n\tEl porcentaje de coincidencia total del texto es del %.0f%%", structpalclv[5].float_porcentajetotal);  ////////////// REVISTAR COMO SACAR EL PORCENTAJE TOTAL.
-			
+								fprintf(results,"\n***El porcentaje de coincidencia total del texto es del %.0f%%***", porcentotal); 
+			/*
+			Hay que ver si haciendo una estructura con el fichero se podría guardar ahi el porcentaje
+			total de palabras por texto.
+			*/
 				int fx;
 				for(fx=0;fx<=5;fx++){
 					structpalclv[fx].int_vecesrepetida=0;
