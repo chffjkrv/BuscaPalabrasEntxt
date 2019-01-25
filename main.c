@@ -23,7 +23,6 @@ int main( void )
 	int acumnumpalcmp;
 	float acum = 0.00;
 	float porcentotal = 0.00;
-	float porcentaje = 0.00;
 	int longitud;
 	int rescomp;
 
@@ -42,6 +41,7 @@ int main( void )
 		int int_largoPalabra; 
 		int int_vecesrepetida;
 		float float_porcentaje;
+		float float_porcentajetotal;		
 		char char_palanterior[50];
 		char char_palsiguiente[50];
 	};
@@ -150,16 +150,16 @@ int main( void )
 										fprintf(results,"\t\t\t\t<<<<<<<<<<--------------||\n\n");
 										structpalclv[f3].float_porcentaje = structpalclv[f3].int_vecesrepetida*100/cont;
 										fprintf(results, "El porcentaje de esta palabra sobre el texto es del %.0f%%\n", structpalclv[f3].float_porcentaje );
-
+										structpalclv[f3].float_porcentajetotal= structpalclv[f3].float_porcentaje+structpalclv[f3].float_porcentajetotal;
 									}
 								}	
-								
+								fprintf(results,"\n\tEl porcentaje de coincidencia total del texto es del %.0f%%", structpalclv[5].float_porcentajetotal);  ////////////// REVISTAR COMO SACAR EL PORCENTAJE TOTAL.
+			
 				int fx;
 				for(fx=0;fx<=5;fx++){
 					structpalclv[fx].int_vecesrepetida=0;
 				}						//AQUI PONEMOS A 0 LOS CONTADORES DE VECES REPETIDAS DE LAS STRUCTS.									
 			}
-			
 			}
 			
         fclose(results);
