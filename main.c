@@ -21,7 +21,7 @@ int main( void )
 	char nomtxtcmp[50];
 	float cont;
 	int acumnumpalcmp;
-	float acum = 0.00;
+	float acum = 0.00;	
 	float porcentotal;
 	int longitud;
 	int rescomp;
